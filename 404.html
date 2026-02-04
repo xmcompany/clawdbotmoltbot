@@ -128,8 +128,54 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
     list-style: none;
     gap: 2rem;
 }
+.nav-menu > li {
+    position: relative;
+}
 .nav-menu a { color: var(--color-text); font-weight: 500; }
 .nav-menu a:hover { color: var(--color-primary); }
+
+/* Dropdown Menu */
+.has-dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown-menu li {
+    padding: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 0.625rem 1.25rem;
+    color: var(--color-text);
+    font-weight: 400;
+    transition: background-color 0.2s;
+}
+.dropdown-menu a:hover {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+}
+
 .mobile-menu-toggle { display: none; }
 
 /* ========== Hero Section ========== */
@@ -377,7 +423,51 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
         <div class="container">
             <h2 class="section-title">About OpenClaw</h2>
             <div class="about-content">
-                OpenClaw 是一个强大的 AI 聊天助手，支持与 Discord、Slack、Telegram 等主流聊天工具集成。了解更多信息，请访问官方网站：https://openclaw.ai/
+                <div class="about-intro">
+    <p>OpenClaw represents a breakthrough in AI-powered communication technology, designed specifically for teams and communities that rely on modern chat platforms. This sophisticated AI chat assistant seamlessly integrates with Discord, Slack, Telegram, and numerous other messaging platforms, transforming how teams collaborate and communicate in digital workspaces.</p>
+    
+    <p>Built on advanced natural language processing technology, OpenClaw understands context, maintains conversation flow, and provides intelligent responses that feel remarkably human. Whether you're managing a gaming community on Discord, coordinating a development team on Slack, or running customer support through Telegram, OpenClaw adapts to your specific needs and communication style.</p>
+</div>
+
+<div class="features-highlight">
+    <h3>Why Teams Choose OpenClaw</h3>
+    
+    <p>The platform's versatility sets it apart from conventional chatbots. OpenClaw doesn't just respond to commands—it actively participates in conversations, learns from interactions, and continuously improves its understanding of your team's unique communication patterns. This adaptive intelligence makes it an invaluable asset for organizations of all sizes.</p>
+    
+    <p>Integration is remarkably straightforward. Unlike complex enterprise solutions that require extensive technical knowledge, OpenClaw can be deployed in minutes. The setup process guides you through platform-specific configurations, ensuring optimal performance whether you're connecting to Discord servers, Slack workspaces, or Telegram groups.</p>
+    
+    <p>Security and privacy remain paramount in OpenClaw's design philosophy. All communications are encrypted, and the system adheres to strict data protection standards. Your conversations, team information, and sensitive data remain confidential, with robust access controls ensuring only authorized users can interact with the AI assistant.</p>
+</div>
+
+<div class="use-cases-overview">
+    <h3>Practical Applications Across Industries</h3>
+    
+    <p>Customer service teams leverage OpenClaw to handle routine inquiries, freeing human agents to focus on complex issues requiring personal attention. The AI assistant can manage multiple conversations simultaneously, providing instant responses to frequently asked questions while escalating sophisticated problems to appropriate team members.</p>
+    
+    <p>Educational institutions utilize OpenClaw for student support, answering questions about courses, schedules, and campus resources. The assistant operates 24/7, ensuring students receive timely information regardless of time zones or office hours. This constant availability significantly improves student satisfaction and reduces administrative workload.</p>
+    
+    <p>Development teams find OpenClaw particularly valuable for project coordination. The assistant can track tasks, send reminders, facilitate stand-up meetings, and even help with code-related questions. By automating routine project management tasks, teams can maintain focus on actual development work.</p>
+</div>
+
+<div class="getting-started-info">
+    <h3>Getting Started with OpenClaw</h3>
+    
+    <p>Beginning your OpenClaw journey requires minimal technical expertise. Our comprehensive documentation walks you through each integration step, from initial setup to advanced customization. The platform supports both Moltbot and Clawdbot configurations, allowing you to choose the deployment model that best suits your infrastructure requirements.</p>
+    
+    <p>Training OpenClaw for your specific use case is intuitive. The system learns from your team's communication patterns, gradually becoming more effective at understanding context and providing relevant responses. This machine learning capability means OpenClaw becomes more valuable over time, continuously adapting to your evolving needs.</p>
+    
+    <p>For organizations requiring specialized functionality, OpenClaw offers extensive customization options. You can define custom commands, create automated workflows, and integrate with existing tools and services. This flexibility ensures OpenClaw complements your current technology stack rather than requiring disruptive changes to established processes.</p>
+</div>
+
+<div class="community-support">
+    <h3>Community and Support</h3>
+    
+    <p>Join thousands of teams worldwide who have transformed their communication workflows with OpenClaw. Our active community shares best practices, creative implementations, and helpful tips for maximizing the platform's potential. Whether you're just starting or looking to optimize an existing deployment, you'll find valuable insights from experienced users.</p>
+    
+    <p>Professional support is available for enterprise deployments, ensuring your team receives expert guidance throughout implementation and beyond. Our support team understands the unique challenges of integrating AI assistants into existing workflows and provides tailored solutions to address your specific requirements.</p>
+    
+    <p>Explore our detailed guides covering Discord integration, Slack setup, Telegram configuration, and advanced use cases. Learn how other organizations leverage OpenClaw for customer service, team collaboration, education, and creative applications. Start your free trial today and experience the future of AI-powered communication.</p>
+</div>
             </div>
         </div>
     </section>
