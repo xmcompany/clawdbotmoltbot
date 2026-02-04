@@ -1,0 +1,2 @@
+# 移除 .html 后缀
+/*.html  /:splat  301

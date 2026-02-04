@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    <title>Discord 服务器集成 OpenClaw：完整实战指南 - OpenClaw 介绍</title>
+
+
+<meta name="description" content="Discord 集成 OpenClaw 完整教程：Bot 创建、权限配置、命令设置。让 Moltbot 成为你 Discord 服务器的智能助手。">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://clawdbotmoltbot.com/openclaw-discord-integration">
+
+
+<meta property="og:title" content="Discord 服务器集成 OpenClaw：完整实战指南 - OpenClaw 介绍">
+<meta property="og:description" content="Discord 集成 OpenClaw 完整教程：Bot 创建、权限配置、命令设置。让 Moltbot 成为你 Discord 服务器的智能助手。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://clawdbotmoltbot.com/openclaw-discord-integration">
+<meta property="og:image" content="https://clawdbotmoltbot.com/images/og-image.png">
+<meta property="og:site_name" content="OpenClaw 介绍">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Discord 服务器集成 OpenClaw：完整实战指南 - OpenClaw 介绍">
+<meta name="twitter:description" content="Discord 集成 OpenClaw 完整教程：Bot 创建、权限配置、命令设置。让 Moltbot 成为你 Discord 服务器的智能助手。">
+<meta name="twitter:image" content="https://clawdbotmoltbot.com/images/og-image.png">
+
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","name":"Discord 服务器集成 OpenClaw：完整实战指南 - OpenClaw 介绍","description":"Discord 集成 OpenClaw 完整教程：Bot 创建、权限配置、命令设置。让 Moltbot 成为你 Discord 服务器的智能助手。","url":"https://clawdbotmoltbot.com/openclaw-discord-integration","image":"https://clawdbotmoltbot.com/images/og-image.png","publisher":{"@type":"Organization","name":"OpenClaw 介绍","url":"https://clawdbotmoltbot.com"}}
+</script>
+
+
+
+
+    
+    
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    
+    <style>
+/* ========== CSS Variables ========== */
+:root {
+    --color-primary: #2563eb;
+    --color-secondary: #64748b;
+    --color-accent: #0ea5e9;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f8fafc;
+    --color-text: #1e293b;
+    --color-text-light: #64748b;
+    --color-border: #e2e8f0;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --max-width: 1200px;
+    --header-height: 64px;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+a { color: var(--color-primary); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--color-accent); }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.3; font-weight: 600; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; margin-top: 2rem; margin-bottom: 1rem; }
+h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+
+/* ========== Layout ========== */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+.site-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+.main-content { flex: 1; padding: 2rem 0; }
+
+/* ========== Header ========== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    height: var(--header-height);
+}
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+}
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+}
+.logo-image {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+}
+.logo-text {
+    display: inline-block;
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+.nav-menu a { color: var(--color-text); font-weight: 500; }
+.nav-menu a:hover { color: var(--color-primary); }
+.mobile-menu-toggle { display: none; }
+
+/* ========== Hero Section ========== */
+.hero-section {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+}
+.hero-title { font-size: 3rem; margin-bottom: 1rem; }
+.hero-tagline { font-size: 1.25rem; color: var(--color-text-light); max-width: 600px; margin: 0 auto; }
+
+/* ========== Section Styles ========== */
+.section-title { text-align: center; margin-bottom: 0.5rem; }
+.section-desc { text-align: center; color: var(--color-text-light); margin-bottom: 2rem; }
+.section-footer { text-align: center; margin-top: 2rem; }
+
+/* ========== Tools Grid ========== */
+.tools-section, .articles-section, .about-section { padding: 4rem 0; }
+.tools-section { background: var(--color-bg-alt); }
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.tool-card {
+    background: var(--color-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: var(--color-text);
+}
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text);
+}
+.tool-icon { color: var(--color-primary); margin-bottom: 1rem; }
+.tool-image { margin-bottom: 1rem; border-radius: var(--radius); overflow: hidden; }
+.tool-title { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.tool-excerpt { font-size: 0.875rem; color: var(--color-text-light); }
+
+/* ========== Articles Grid ========== */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+.article-card {
+    background: var(--color-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+.article-card a { color: var(--color-text); display: block; }
+.article-image { aspect-ratio: 16/9; overflow: hidden; }
+.article-image img { width: 100%; height: 100%; object-fit: cover; }
+.article-content { padding: 1.25rem; }
+.article-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+.article-title { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.article-excerpt { font-size: 0.875rem; color: var(--color-text-light); margin-bottom: 0.75rem; }
+.article-meta { font-size: 0.75rem; color: var(--color-text-light); }
+
+/* ========== Article Page ========== */
+.article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; }
+.article-header { margin-bottom: 2rem; }
+.article-featured-image { margin-bottom: 2rem; border-radius: var(--radius); overflow: hidden; }
+.content-section { margin-bottom: 2rem; }
+.content-section p { margin-bottom: 1rem; }
+.content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+.content-section li { margin-bottom: 0.5rem; }
+
+/* ========== Tool Page ========== */
+.tool-page .tool-header { text-align: center; margin-bottom: 2rem; }
+.tool-interface {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+.tool-content { max-width: 800px; margin: 0 auto; }
+
+/* ========== FAQ ========== */
+.faq-list { display: flex; flex-direction: column; gap: 1rem; }
+.faq-item {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+.faq-item h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--color-text); }
+.faq-item div { color: var(--color-text-light); }
+
+/* ========== Breadcrumb ========== */
+.breadcrumb { margin-bottom: 1.5rem; }
+.breadcrumb ol { display: flex; flex-wrap: wrap; list-style: none; gap: 0.5rem; }
+.breadcrumb li::after { content: '/'; margin-left: 0.5rem; color: var(--color-text-light); }
+.breadcrumb li:last-child::after { display: none; }
+.breadcrumb a { color: var(--color-text-light); }
+.breadcrumb li:last-child { color: var(--color-text); }
+
+/* ========== Sidebar ========== */
+.sidebar-widget {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.widget-title { font-size: 1rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-primary); }
+.category-list, .popular-list, .tools-list { list-style: none; }
+.category-list li, .popular-list li, .tools-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--color-border); }
+.category-list li:last-child, .popular-list li:last-child, .tools-list li:last-child { border-bottom: none; }
+.category-list a { display: flex; justify-content: space-between; color: var(--color-text); }
+.category-list .count { color: var(--color-text-light); font-size: 0.875rem; }
+
+/* ========== Footer ========== */
+.site-footer {
+    background: var(--color-text);
+    color: #fff;
+    padding: 3rem 0 1.5rem;
+    margin-top: auto;
+}
+.footer-content { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; margin-bottom: 2rem; }
+.footer-logo { font-size: 1.5rem; font-weight: 700; color: #fff; }
+.footer-desc { color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-size: 0.875rem; }
+.footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.footer-column h4 { font-size: 0.875rem; text-transform: uppercase; margin-bottom: 1rem; color: rgba(255,255,255,0.5); }
+.footer-column ul { list-style: none; }
+.footer-column li { margin-bottom: 0.5rem; }
+.footer-column a { color: rgba(255,255,255,0.8); font-size: 0.875rem; }
+.footer-column a:hover { color: #fff; }
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.5);
+}
+.social-links { display: flex; gap: 1rem; }
+.social-links a { color: rgba(255,255,255,0.7); }
+.social-links a:hover { color: #fff; }
+
+/* ========== Buttons ========== */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-primary:hover { background: var(--color-accent); color: #fff; }
+.btn-outline { border: 2px solid var(--color-primary); color: var(--color-primary); }
+.btn-outline:hover { background: var(--color-primary); color: #fff; }
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+    .nav-menu { display: none; }
+    .mobile-menu-toggle { display: block; background: none; border: none; cursor: pointer; }
+    .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--color-text); margin: 5px 0; }
+    .hero-title { font-size: 2rem; }
+    .article-layout { grid-template-columns: 1fr; }
+    .article-sidebar { order: -1; }
+    .footer-content { grid-template-columns: 1fr; }
+    .footer-links { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+        
+    
+    </head>
+<body>
+    <div class="site-wrapper">
+        
+        <header class="site-header">
+    <div class="container">
+        <nav class="main-nav">
+            <a href="/" class="logo" title="OpenClaw 介绍">
+                                
+                                    <span class="logo-text">OpenClaw 介绍</span>
+                            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="/" title="Home">Home</a></li>
+                
+                                <li><a href="/#tools" title="Tools">Tools</a></li>
+                                
+                                <li><a href="/#articles" title="Articles">Articles</a></li>
+                                
+                
+                                <li class="has-dropdown">
+                    <a href="#" title="Categories">Categories</a>
+                    <ul class="dropdown-menu">
+                                                <li><a href="/category/installation-guide" title="安装使用指南">安装使用指南</a></li>
+                                                <li><a href="/category/chat-integrations" title="聊天工具集成">聊天工具集成</a></li>
+                                                <li><a href="/category/use-cases" title="使用场景">使用场景</a></li>
+                                                <li><a href="/category/creative-ideas" title="奇思妙想">奇思妙想</a></li>
+                                                <li><a href="/category/user-reviews" title="网友评价">网友评价</a></li>
+                                            </ul>
+                </li>
+                                
+                <li><a href="/#about" title="About">About</a></li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </div>
+</header>
+        
+        
+        <main class="main-content">
+            <article class="article-page" itemscope itemtype="https://schema.org/Article">
+    <div class="container">
+        <div class="article-layout">
+            
+            <div class="article-main">
+                
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a itemprop="item" href="/" title="OpenClaw 介绍">
+                                <span itemprop="name">Home</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                                                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a itemprop="item" href="/category/chat-integrations">
+                                <span itemprop="name">聊天工具集成</span>
+                            </a>
+                            <meta itemprop="position" content="2">
+                        </li>
+                                                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <span itemprop="name">Discord 服务器集成 OpenClaw：完整实战指南</span>
+                            <meta itemprop="position" content="3">
+                        </li>
+                    </ol>
+                </nav>
+
+                
+                <header class="article-header">
+                    <h1 itemprop="headline">Discord 服务器集成 OpenClaw：完整实战指南</h1>
+                    
+                    <div class="article-meta">
+                                                <time itemprop="datePublished" datetime="2026-02-04T14:19:12+08:00">
+                            Feb 04, 2026
+                        </time>
+                                                <span class="read-time">1 min read</span>
+                    </div>
+                </header>
+
+                
+                
+                
+                <div class="article-content" itemprop="articleBody">
+                    
+                                        <div class="content-section">
+                        <p>Discord 拥有超过 1.5 亿月活跃用户，是游戏社区和开发者团队的首选平台。将 OpenClaw 集成到 Discord，可以为社区带来智能问答和自动化管理功能。</p><p>首先在 Discord Developer Portal 创建应用和 Bot 账号。配置 Bot 权限时，需要开启 Message Content Intent，让 Moltbot 能读取消息内容。然后生成邀请链接，将 Bot 添加到你的服务器。</p><p>编辑 OpenClaw 的 Discord 配置文件，填入 Bot Token 和命令前缀。Moltbot 会监听指定频道的消息，Clawdbot 负责生成智能回复。你可以配置自动回复触发词，让 Bot 响应特定消息。</p><p>启动 Discord 集成后，用户可以通过命令与 Clawdbot 对话。你还可以配置频道专属设置，让不同频道有不同的 Bot 行为。权限管理功能确保敏感命令只能由管理员使用。</p><p>优化响应速度很重要。使用更快的 AI 模型、减少上下文长度、启用缓存功能，都能提升用户体验。Moltbot 支持并发处理，可以同时响应多个用户的请求。</p>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                    </div>
+            </div>
+
+            
+            <aside class="article-sidebar">
+                <div class="sidebar">
+    
+        <div class="sidebar-widget">
+        <h3 class="widget-title">Categories</h3>
+        <ul class="category-list">
+                        <li>
+                <a href="/category/installation-guide" title="安装使用指南">
+                    安装使用指南
+                    <span class="count">1</span>
+                </a>
+            </li>
+                        <li>
+                <a href="/category/chat-integrations" title="聊天工具集成">
+                    聊天工具集成
+                    <span class="count">3</span>
+                </a>
+            </li>
+                        <li>
+                <a href="/category/use-cases" title="使用场景">
+                    使用场景
+                    <span class="count">3</span>
+                </a>
+            </li>
+                        <li>
+                <a href="/category/creative-ideas" title="奇思妙想">
+                    奇思妙想
+                    <span class="count">1</span>
+                </a>
+            </li>
+                        <li>
+                <a href="/category/user-reviews" title="网友评价">
+                    网友评价
+                    <span class="count">1</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    
+    
+        <div class="sidebar-widget">
+        <h3 class="widget-title">Popular Articles</h3>
+        <ul class="popular-list">
+                        <li>
+                <a href="/openclaw-quick-start-guide" title="OpenClaw 快速入门：从安装到首次对话">
+                    OpenClaw 快速入门：从安装到首次对话
+                </a>
+            </li>
+                        <li>
+                <a href="/openclaw-discord-integration" title="Discord 服务器集成 OpenClaw：完整实战指南">
+                    Discord 服务器集成 OpenClaw：完整实战指南
+                </a>
+            </li>
+                        <li>
+                <a href="/openclaw-slack-integration" title="Slack 工作空间部署 Clawdbot：提升团队协作效率">
+                    Slack 工作空间部署 Clawdbot：提升团队协作效率
+                </a>
+            </li>
+                        <li>
+                <a href="/openclaw-telegram-integration" title="Telegram Bot 接入 OpenClaw：打造个人 AI 助理">
+                    Telegram Bot 接入 OpenClaw：打造个人 AI 助理
+                </a>
+            </li>
+                        <li>
+                <a href="/openclaw-customer-service" title="OpenClaw 在客户服务中的应用：24/7 智能支持">
+                    OpenClaw 在客户服务中的应用：24/7 智能支持
+                </a>
+            </li>
+                    </ul>
+    </div>
+    
+    
+    
+    
+    </div>
+            </aside>
+        </div>
+    </div>
+</article>
+        </main>
+        
+        
+        <footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="/" class="footer-logo" title="OpenClaw 介绍">OpenClaw 介绍</a>
+                                <p class="footer-desc">OpenClaw 提供智能聊天解决方案，支持多种聊天工具集成。主要产品包括 OpenClaw、Moltbot 和 Clawdbot。官方网站：https://openclaw.ai/</p>
+                            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/" title="Home">Home</a></li>
+                                                <li><a href="/#tools" title="Tools">Tools</a></li>
+                                                                        <li><a href="/#articles" title="Articles">Articles</a></li>
+                                                <li><a href="/#about" title="About">About</a></li>
+                    </ul>
+                </div>
+                
+                                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul>
+                                                <li><a href="/category/installation-guide" title="安装使用指南">安装使用指南</a></li>
+                                                <li><a href="/category/chat-integrations" title="聊天工具集成">聊天工具集成</a></li>
+                                                <li><a href="/category/use-cases" title="使用场景">使用场景</a></li>
+                                                <li><a href="/category/creative-ideas" title="奇思妙想">奇思妙想</a></li>
+                                                <li><a href="/category/user-reviews" title="网友评价">网友评价</a></li>
+                                            </ul>
+                </div>
+                                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy" title="Privacy Policy">Privacy Policy</a></li>
+                        <li><a href="/terms" title="Terms of Service">Terms of Service</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 OpenClaw 介绍. All rights reserved.</p>
+            
+                    </div>
+    </div>
+</footer>
+    </div>
+    
+    
+        
+    
+    </body>
+</html>
