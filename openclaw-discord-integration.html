@@ -261,6 +261,129 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.5rem; }
 .content-section li { margin-bottom: 0.5rem; }
 
+/* Code Blocks */
+.content-section pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+.content-section code {
+    background: #f1f5f9;
+    color: #e11d48;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875em;
+}
+.content-section pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Step-by-step Tutorial Styles */
+.tutorial-step {
+    background: var(--color-bg-alt);
+    border-left: 4px solid var(--color-primary);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+.tutorial-step h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.step-number {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Quick Install Section */
+.quick-install-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin: 2rem 0;
+}
+.quick-install-section h3 {
+    color: white;
+    margin-top: 0;
+}
+.quick-install-section pre {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.platform-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.platform-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1rem;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all 0.3s;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.platform-card:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    color: white;
+}
+.platform-card strong {
+    font-size: 1.1rem;
+}
+.platform-card span {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* Note/Warning Boxes */
+.note-box {
+    background: #dbeafe;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+.warning-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+.success-box {
+    background: #d1fae5;
+    border-left: 4px solid #10b981;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+
 /* ========== Tool Page ========== */
 .tool-page .tool-header { text-align: center; margin-bottom: 2rem; }
 .tool-interface {
@@ -440,7 +563,7 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
                                                 <time itemprop="datePublished" datetime="2026-02-04T15:44:32+08:00">
                             Feb 04, 2026
                         </time>
-                                                <span class="read-time">2 min read</span>
+                                                <span class="read-time">4 min read</span>
                     </div>
                 </header>
 
@@ -450,37 +573,274 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
                 <div class="article-content" itemprop="articleBody">
                     
                                         <div class="content-section">
-                        <p>Discord servers benefit enormously from OpenClaw integration. Moltbot handles moderation, answers questions, and engages community members 24/7. Setup takes about 15 minutes.</p>
+                        <p>Discord servers benefit enormously from OpenClaw integration. Moltbot handles moderation, answers questions, and engages community members 24/7. This comprehensive guide walks through complete Discord setup with code examples.</p>
 
-<h2>Creating Your Discord Bot</h2>
-<p>Visit the Discord Developer Portal and create a new application. Navigate to the Bot section and click "Add Bot". Copy the bot token - you'll need this for OpenClaw configuration.</p>
+<h2>Prerequisites</h2>
+<ul>
+    <li>OpenClaw CLI installed (<code>npm install -g openclaw-cli</code>)</li>
+    <li>Discord account with server admin permissions</li>
+    <li>Node.js 16+ and npm 8+</li>
+    <li>Basic JavaScript knowledge (helpful but not required)</li>
+</ul>
 
-<p>Under OAuth2 settings, select bot permissions: Read Messages, Send Messages, Manage Messages, and Embed Links. Generate the OAuth2 URL and use it to invite Clawdbot to your server.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">1</span>Create Discord Application</h3>
+    <p>Navigate to the Discord Developer Portal and create your bot application:</p>
+    <ol>
+        <li>Go to <a href="https://discord.com/developers/applications" target="_blank">discord.com/developers/applications</a></li>
+        <li>Click "New Application"</li>
+        <li>Name your application (e.g., "Community Assistant")</li>
+        <li>Navigate to the "Bot" tab</li>
+        <li>Click "Add Bot" and confirm</li>
+    </ol>
+</div>
 
-<h3>OpenClaw Configuration</h3>
-<p>Open your OpenClaw config file and add a Discord section. Paste your bot token and specify the server ID. Moltbot connects automatically when you restart OpenClaw.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">2</span>Configure Bot Permissions</h3>
+    <p>Set up the required permissions for OpenClaw to function properly:</p>
+    <p><strong>Required Intents (in Bot settings):</strong></p>
+    <ul>
+        <li>✓ Presence Intent</li>
+        <li>✓ Server Members Intent</li>
+        <li>✓ Message Content Intent</li>
+    </ul>
+    <p><strong>Bot Permissions (in OAuth2 → URL Generator):</strong></p>
+    <pre><code>Permissions needed:
+- Read Messages/View Channels
+- Send Messages
+- Send Messages in Threads
+- Embed Links
+- Attach Files
+- Read Message History
+- Add Reactions
+- Use Slash Commands</code></pre>
+</div>
 
-<p>Configure command prefixes - most servers use "!" or "/". Set up role-based permissions to control who can interact with Clawdbot. The bot respects Discord's permission hierarchy.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">3</span>Initialize OpenClaw for Discord</h3>
+    <p>Create a new OpenClaw project configured for Discord:</p>
+    <pre><code>openclaw init discord-bot --platform discord
+cd discord-bot</code></pre>
+    <p>This generates a project structure:</p>
+    <pre><code>discord-bot/
+├── openclaw.config.js
+├── .env.example
+├── commands/
+│   ├── help.js
+│   └── info.js
+├── events/
+│   ├── messageCreate.js
+│   └── ready.js
+└── package.json</code></pre>
+</div>
 
-<h2>Essential Features</h2>
-<p>OpenClaw monitors all channels by default. Configure specific channels for bot responses to avoid spam. Moltbot can summarize long conversations, making it perfect for busy servers.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">4</span>Configure Environment Variables</h3>
+    <p>Copy <code>.env.example</code> to <code>.env</code> and add your credentials:</p>
+    <pre><code># Discord Configuration
+DISCORD_BOT_TOKEN=your_bot_token_here
+DISCORD_CLIENT_ID=your_client_id
+DISCORD_GUILD_ID=your_server_id
 
-<p>Enable auto-moderation to filter inappropriate content. Clawdbot detects spam patterns and warns users automatically. The AI learns from moderator actions, improving over time.</p>
+# OpenClaw Settings
+OPENCLAW_API_KEY=your_openclaw_api_key
+OPENCLAW_MODE=production
+OPENCLAW_LANGUAGE=en
 
-<h3>Custom Commands</h3>
-<p>Create custom commands for frequently asked questions. When users type "!rules", Moltbot displays server guidelines. The "!help" command lists all available OpenClaw features.</p>
+# Optional: Advanced Features
+ENABLE_LEARNING=true
+ENABLE_MODERATION=true
+LOG_LEVEL=info</code></pre>
+</div>
 
-<p>Advanced users can create command chains. For example, "!welcome @user" triggers Clawdbot to send a personalized greeting with server information.</p>
+<div class="note-box">
+    <strong>💡 Finding Your IDs:</strong>
+    <ul>
+        <li><strong>Bot Token:</strong> Discord Developer Portal → Your App → Bot → Token</li>
+        <li><strong>Client ID:</strong> Discord Developer Portal → Your App → OAuth2 → Client ID</li>
+        <li><strong>Guild ID:</strong> Enable Developer Mode in Discord → Right-click your server → Copy ID</li>
+    </ul>
+</div>
 
-<h2>Performance Optimization</h2>
-<p>Large servers require rate limiting to prevent API overuse. Configure message queues in OpenClaw settings. Moltbot processes requests efficiently, maintaining sub-second response times.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">5</span>Customize Bot Configuration</h3>
+    <p>Edit <code>openclaw.config.js</code> to define your bot's personality and capabilities:</p>
+    <pre><code>module.exports = {
+  name: 'Community Assistant',
+  prefix: '!',
+  
+  // AI Behavior
+  ai: {
+    model: 'openclaw-v2',
+    temperature: 0.7,
+    maxTokens: 500,
+    contextWindow: 10
+  },
+  
+  // Discord-specific settings
+  discord: {
+    status: 'online',
+    activity: {
+      type: 'WATCHING',
+      name: 'for questions'
+    },
+    embedColor: '#5865F2'
+  },
+  
+  // Feature toggles
+  features: {
+    autoModeration: true,
+    welcomeMessages: true,
+    customCommands: true,
+    reactionRoles: false
+  },
+  
+  // Response templates
+  responses: {
+    greeting: 'Hey there! 👋 How can I help you today?',
+    farewell: 'Goodbye! Feel free to ask if you need anything.',
+    error: 'Oops! Something went wrong. Please try again.',
+    noPermission: 'Sorry, you don\'t have permission for that.'
+  }
+};</code></pre>
+</div>
 
-<p>Enable caching for common queries. Clawdbot stores frequently requested information locally, reducing API calls by 60%. Cache expires after 24 hours by default.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">6</span>Create Custom Commands</h3>
+    <p>Add a custom command in <code>commands/server-info.js</code>:</p>
+    <pre><code>module.exports = {
+  name: 'serverinfo',
+  description: 'Display server information',
+  
+  async execute(message, args, client) {
+    const { guild } = message;
+    
+    const embed = {
+      color: 0x5865F2,
+      title: `📊 ${guild.name} Server Info`,
+      fields: [
+        {
+          name: 'Members',
+          value: `${guild.memberCount}`,
+          inline: true
+        },
+        {
+          name: 'Created',
+          value: guild.createdAt.toDateString(),
+          inline: true
+        },
+        {
+          name: 'Owner',
+          value: `<@${guild.ownerId}>`,
+          inline: true
+        }
+      ],
+      timestamp: new Date()
+    };
+    
+    await message.reply({ embeds: [embed] });
+  }
+};</code></pre>
+</div>
 
-<h3>Monitoring and Analytics</h3>
-<p>OpenClaw provides detailed usage statistics. Track message volume, response times, and user engagement. Export data monthly for community reports.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">7</span>Invite Bot to Your Server</h3>
+    <p>Generate an invite URL with proper permissions:</p>
+    <pre><code>openclaw invite --permissions 8</code></pre>
+    <p>Or manually construct the URL:</p>
+    <pre><code>https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot%20applications.commands</code></pre>
+    <p>Open the URL in your browser and select your server.</p>
+</div>
 
-<p>Set up alerts for unusual activity. Moltbot notifies administrators when error rates spike or response times exceed thresholds.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">8</span>Launch Your Bot</h3>
+    <p>Start OpenClaw in development mode for testing:</p>
+    <pre><code>openclaw dev</code></pre>
+    <p>Expected output:</p>
+    <pre><code>🚀 OpenClaw Discord Bot Starting...
+✓ Configuration loaded
+✓ Commands registered: 5
+✓ Events loaded: 3
+✓ Connected to Discord Gateway
+✓ Bot online: Community Assistant#1234
+✓ Serving 1 guild with 247 members
+→ Ready to receive messages!</code></pre>
+</div>
+
+<div class="success-box">
+    <strong>✅ Bot is Live!</strong> Test it by sending <code>!help</code> in your Discord server.
+</div>
+
+<h2>Advanced Configuration</h2>
+
+<h3>Slash Commands</h3>
+<p>Register slash commands for better user experience:</p>
+<pre><code>// commands/slash/ping.js
+const { SlashCommandBuilder } = require('discord.js');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('Check bot latency'),
+    
+  async execute(interaction) {
+    const latency = Date.now() - interaction.createdTimestamp;
+    await interaction.reply(`🏓 Pong! Latency: ${latency}ms`);
+  }
+};</code></pre>
+
+<p>Deploy slash commands:</p>
+<pre><code>openclaw deploy-commands</code></pre>
+
+<h3>Event Handlers</h3>
+<p>Handle Discord events in <code>events/messageCreate.js</code>:</p>
+<pre><code>module.exports = {
+  name: 'messageCreate',
+  
+  async execute(message, client) {
+    // Ignore bots
+    if (message.author.bot) return;
+    
+    // Check for mentions
+    if (message.mentions.has(client.user)) {
+      const response = await client.openclaw.generateResponse(
+        message.content,
+        message.author.id
+      );
+      await message.reply(response);
+    }
+  }
+};</code></pre>
+
+<h2>Production Deployment</h2>
+<p>Deploy to production using PM2 for process management:</p>
+<pre><code># Install PM2
+npm install -g pm2
+
+# Start bot with PM2
+pm2 start openclaw --name discord-bot -- start
+
+# Enable auto-restart on system reboot
+pm2 startup
+pm2 save
+
+# Monitor logs
+pm2 logs discord-bot</code></pre>
+
+<div class="warning-box">
+    <strong>⚠️ Rate Limiting:</strong> Discord enforces strict rate limits. OpenClaw handles this automatically, but avoid sending too many messages in quick succession during testing.
+</div>
+
+<h2>Troubleshooting</h2>
+<p>Common issues and solutions:</p>
+<ul>
+    <li><strong>Bot doesn't respond:</strong> Check Message Content Intent is enabled</li>
+    <li><strong>Permission errors:</strong> Verify bot role is above managed roles</li>
+    <li><strong>Commands not working:</strong> Ensure prefix matches configuration</li>
+    <li><strong>Connection issues:</strong> Validate bot token in .env file</li>
+</ul>
+
+<p>For additional support, visit the OpenClaw Discord community or check our troubleshooting guide.</p>
                     </div>
                     
                     

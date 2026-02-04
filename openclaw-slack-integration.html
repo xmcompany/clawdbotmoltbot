@@ -261,6 +261,129 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.5rem; }
 .content-section li { margin-bottom: 0.5rem; }
 
+/* Code Blocks */
+.content-section pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+.content-section code {
+    background: #f1f5f9;
+    color: #e11d48;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875em;
+}
+.content-section pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Step-by-step Tutorial Styles */
+.tutorial-step {
+    background: var(--color-bg-alt);
+    border-left: 4px solid var(--color-primary);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+.tutorial-step h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.step-number {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Quick Install Section */
+.quick-install-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin: 2rem 0;
+}
+.quick-install-section h3 {
+    color: white;
+    margin-top: 0;
+}
+.quick-install-section pre {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.platform-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.platform-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1rem;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all 0.3s;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.platform-card:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    color: white;
+}
+.platform-card strong {
+    font-size: 1.1rem;
+}
+.platform-card span {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* Note/Warning Boxes */
+.note-box {
+    background: #dbeafe;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+.warning-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+.success-box {
+    background: #d1fae5;
+    border-left: 4px solid #10b981;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+}
+
 /* ========== Tool Page ========== */
 .tool-page .tool-header { text-align: center; margin-bottom: 2rem; }
 .tool-interface {
@@ -440,7 +563,7 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
                                                 <time itemprop="datePublished" datetime="2026-02-04T15:44:32+08:00">
                             Feb 04, 2026
                         </time>
-                                                <span class="read-time">2 min read</span>
+                                                <span class="read-time">5 min read</span>
                     </div>
                 </header>
 
@@ -450,37 +573,299 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
                 <div class="article-content" itemprop="articleBody">
                     
                                         <div class="content-section">
-                        <p>Slack workspaces become significantly more efficient with Clawdbot integration. OpenClaw handles routine questions, schedules meetings, and provides instant information access. Teams report 40% reduction in repetitive inquiries.</p>
+                        <p>Slack workspaces become significantly more efficient with Clawdbot integration. OpenClaw handles routine questions, schedules meetings, and provides instant information access. Teams report 40% reduction in time spent on administrative tasks after deploying OpenClaw.</p>
 
-<h2>Slack App Setup</h2>
-<p>Create a new Slack app in your workspace settings. Enable bot user functionality and configure OAuth scopes: chat:write, channels:read, and users:read. Install the app to your workspace.</p>
+<h2>Prerequisites</h2>
+<ul>
+    <li>OpenClaw CLI installed (<code>npm install -g openclaw-cli</code>)</li>
+    <li>Slack workspace with admin permissions</li>
+    <li>Node.js 16+ and npm 8+</li>
+    <li>Basic understanding of Slack apps</li>
+</ul>
 
-<p>Copy the Bot User OAuth Token from the app settings. Add this token to your OpenClaw configuration file under the Slack section. Moltbot connects within seconds of restarting.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">1</span>Create Slack App</h3>
+    <p>Start by creating a new Slack application in your workspace:</p>
+    <ol>
+        <li>Visit <a href="https://api.slack.com/apps" target="_blank">api.slack.com/apps</a></li>
+        <li>Click "Create New App"</li>
+        <li>Choose "From scratch"</li>
+        <li>Name your app (e.g., "Team Assistant")</li>
+        <li>Select your workspace</li>
+    </ol>
+</div>
 
-<h3>Channel Configuration</h3>
-<p>Invite Clawdbot to relevant channels using /invite @clawdbot. The bot monitors these channels for mentions and direct messages. Configure private channels separately for sensitive discussions.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">2</span>Configure Bot Permissions</h3>
+    <p>Navigate to "OAuth & Permissions" and add these Bot Token Scopes:</p>
+    <pre><code>Required Scopes:
+- app_mentions:read
+- channels:history
+- channels:read
+- chat:write
+- chat:write.public
+- commands
+- groups:history
+- groups:read
+- im:history
+- im:read
+- im:write
+- users:read
+- reactions:write</code></pre>
+</div>
 
-<p>Set up channel-specific behaviors. In #support, OpenClaw provides customer service responses. In #general, Moltbot offers lighter, conversational interactions. The AI adapts its tone automatically.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">3</span>Enable Event Subscriptions</h3>
+    <p>In "Event Subscriptions", enable events and subscribe to:</p>
+    <pre><code>Bot Events:
+- app_mention
+- message.channels
+- message.groups
+- message.im</code></pre>
+    <p>You'll need a public URL for the Request URL. We'll set this up after deploying OpenClaw.</p>
+</div>
 
-<h2>Workflow Automation</h2>
-<p>OpenClaw integrates with Slack workflows seamlessly. Create shortcuts that trigger Clawdbot actions. For example, "Summarize thread" condenses long discussions into key points.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">4</span>Initialize OpenClaw for Slack</h3>
+    <p>Create a new OpenClaw project configured for Slack:</p>
+    <pre><code>openclaw init slack-bot --platform slack
+cd slack-bot</code></pre>
+    <p>Project structure:</p>
+    <pre><code>slack-bot/
+├── openclaw.config.js
+├── .env.example
+├── commands/
+│   ├── help.js
+│   └── status.js
+├── events/
+│   ├── message.js
+│   └── app_mention.js
+└── package.json</code></pre>
+</div>
 
-<p>Schedule recurring messages with Moltbot. Daily standup reminders, weekly reports, and monthly summaries post automatically. The AI generates content based on channel activity.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">5</span>Configure Environment Variables</h3>
+    <p>Copy <code>.env.example</code> to <code>.env</code> and add your Slack credentials:</p>
+    <pre><code># Slack Configuration
+SLACK_BOT_TOKEN=xoxb-your-bot-token
+SLACK_SIGNING_SECRET=your-signing-secret
+SLACK_APP_TOKEN=xapp-your-app-token
 
-<h3>Smart Responses</h3>
-<p>Clawdbot learns from your team's communication patterns. After two weeks, response accuracy improves by 35%. The AI suggests relevant documents and past conversations.</p>
+# OpenClaw Settings
+OPENCLAW_API_KEY=your_openclaw_api_key
+OPENCLAW_PORT=3000
+OPENCLAW_MODE=production
 
-<p>Enable context awareness for better responses. OpenClaw analyzes recent messages before replying, ensuring relevant and timely information. Moltbot references previous discussions naturally.</p>
+# Optional Features
+ENABLE_SLASH_COMMANDS=true
+ENABLE_SHORTCUTS=true
+LOG_LEVEL=info</code></pre>
+</div>
 
-<h2>Integration with Tools</h2>
-<p>Connect OpenClaw to your existing tools. Clawdbot pulls data from Jira, GitHub, and Google Drive. Ask "What's the status of PROJECT-123?" and receive instant updates.</p>
+<div class="note-box">
+    <strong>💡 Finding Your Tokens:</strong>
+    <ul>
+        <li><strong>Bot Token:</strong> OAuth & Permissions → Bot User OAuth Token</li>
+        <li><strong>Signing Secret:</strong> Basic Information → App Credentials → Signing Secret</li>
+        <li><strong>App Token:</strong> Basic Information → App-Level Tokens (create one with connections:write scope)</li>
+    </ul>
+</div>
 
-<p>Calendar integration allows Moltbot to schedule meetings. Simply say "Schedule a meeting with @john tomorrow at 2pm" and the AI handles the rest, sending invites automatically.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">6</span>Customize Bot Configuration</h3>
+    <p>Edit <code>openclaw.config.js</code> for your team's needs:</p>
+    <pre><code>module.exports = {
+  name: 'Team Assistant',
+  
+  // AI Configuration
+  ai: {
+    model: 'openclaw-v2',
+    temperature: 0.7,
+    maxTokens: 500,
+    contextWindow: 15
+  },
+  
+  // Slack-specific settings
+  slack: {
+    socketMode: true,
+    appToken: process.env.SLACK_APP_TOKEN,
+    signingSecret: process.env.SLACK_SIGNING_SECRET,
+    token: process.env.SLACK_BOT_TOKEN
+  },
+  
+  // Feature toggles
+  features: {
+    slashCommands: true,
+    shortcuts: true,
+    homeTab: true,
+    messageActions: true
+  },
+  
+  // Response templates
+  responses: {
+    greeting: 'Hi there! :wave: How can I help you today?',
+    thinking: 'Let me think about that... :thinking_face:',
+    error: 'Oops! Something went wrong. Please try again.',
+    noPermission: 'Sorry, you need admin permissions for that.'
+  }
+};</code></pre>
+</div>
 
-<h3>Security and Permissions</h3>
-<p>OpenClaw respects Slack's permission model. Clawdbot only accesses channels it's invited to. Configure data retention policies to comply with company requirements.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">7</span>Create Slash Commands</h3>
+    <p>Add a custom slash command in <code>commands/team-status.js</code>:</p>
+    <pre><code>module.exports = {
+  command: '/team-status',
+  description: 'Check team availability',
+  
+  async execute({ command, ack, say, client }) {
+    await ack();
+    
+    try {
+      const users = await client.users.list();
+      const activeUsers = users.members.filter(u => 
+        !u.is_bot && u.presence === 'active'
+      );
+      
+      await say({
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: `*Team Status* :chart_with_upwards_trend:\n${activeUsers.length} members online`
+            }
+          },
+          {
+            type: 'divider'
+          },
+          {
+            type: 'section',
+            fields: activeUsers.slice(0, 10).map(u => ({
+              type: 'mrkdwn',
+              text: `:green_circle: <@${u.id}>`
+            }))
+          }
+        ]
+      });
+    } catch (error) {
+      await say('Error fetching team status');
+    }
+  }
+};</code></pre>
+</div>
 
-<p>Enable audit logging to track all Moltbot interactions. Administrators review logs monthly for compliance. The system automatically redacts sensitive information.</p>
+<div class="tutorial-step">
+    <h3><span class="step-number">8</span>Install App to Workspace</h3>
+    <p>Install your app to the Slack workspace:</p>
+    <ol>
+        <li>Go to "Install App" in your app settings</li>
+        <li>Click "Install to Workspace"</li>
+        <li>Review permissions and authorize</li>
+        <li>Copy the Bot User OAuth Token to your <code>.env</code> file</li>
+    </ol>
+</div>
+
+<div class="tutorial-step">
+    <h3><span class="step-number">9</span>Start OpenClaw</h3>
+    <p>Launch your Slack bot:</p>
+    <pre><code>openclaw dev</code></pre>
+    <p>Expected output:</p>
+    <pre><code>🚀 OpenClaw Slack Bot Starting...
+✓ Configuration loaded
+✓ Socket mode enabled
+✓ Connected to Slack
+✓ Slash commands registered: 3
+✓ Event handlers loaded: 4
+✓ Bot online: Team Assistant
+→ Listening for messages and commands!</code></pre>
+</div>
+
+<div class="success-box">
+    <strong>✅ Bot is Live!</strong> Test it by mentioning <code>@Team Assistant</code> in any channel or using your slash commands.
+</div>
+
+<h2>Advanced Features</h2>
+
+<h3>Interactive Messages</h3>
+<p>Create interactive buttons and menus:</p>
+<pre><code>// events/interactive.js
+module.exports = {
+  async execute({ body, ack, say, client }) {
+    await ack();
+    
+    const action = body.actions[0];
+    
+    if (action.action_id === 'approve_request') {
+      await say({
+        text: 'Request approved! :white_check_mark:',
+        thread_ts: body.message.ts
+      });
+    }
+  }
+};</code></pre>
+
+<h3>Home Tab</h3>
+<p>Customize the app's home tab:</p>
+<pre><code>// events/app_home_opened.js
+module.exports = {
+  async execute({ event, client }) {
+    await client.views.publish({
+      user_id: event.user,
+      view: {
+        type: 'home',
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: '*Welcome to Team Assistant!* :house:'
+            }
+          },
+          {
+            type: 'actions',
+            elements: [
+              {
+                type: 'button',
+                text: { type: 'plain_text', text: 'Get Help' },
+                action_id: 'help_button'
+              }
+            ]
+          }
+        ]
+      }
+    });
+  }
+};</code></pre>
+
+<h2>Production Deployment</h2>
+<p>Deploy to production with PM2:</p>
+<pre><code># Install PM2
+npm install -g pm2
+
+# Start bot
+pm2 start openclaw --name slack-bot -- start
+
+# Enable auto-restart
+pm2 startup
+pm2 save
+
+# Monitor
+pm2 logs slack-bot</code></pre>
+
+<div class="warning-box">
+    <strong>⚠️ Rate Limits:</strong> Slack enforces rate limits on API calls. OpenClaw handles this automatically with exponential backoff, but be mindful of message frequency.
+</div>
+
+<h2>Troubleshooting</h2>
+<ul>
+    <li><strong>Bot doesn't respond:</strong> Check Socket Mode is enabled and App Token is valid</li>
+    <li><strong>Permission errors:</strong> Verify all required scopes are added</li>
+    <li><strong>Slash commands not working:</strong> Ensure commands are registered in Slack app settings</li>
+    <li><strong>Connection issues:</strong> Validate all tokens in .env file</li>
+</ul>
+
+<p>For additional support, join the OpenClaw Slack community or consult our troubleshooting documentation.</p>
                     </div>
                     
                     
