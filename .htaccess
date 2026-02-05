@@ -1,0 +1,15 @@
+# 本地预览用 - 自动添加 .html 后缀
+RewriteEngine On
+RewriteBase /static-site/clawdbotmoltbot/
+
+# 如果请求的不是文件或目录，尝试添加 .html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 处理 category 子目录
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/static-site/clawdbotmoltbot/%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ $1.html [L]
