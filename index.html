@@ -217,13 +217,18 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
     flex-wrap: wrap;
     justify-content: center;
 }
+.platforms-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 .platforms-icons img {
     width: 28px;
     height: 28px;
     opacity: 0.7;
     transition: all 0.2s;
 }
-.platforms-icons img:hover {
+.platforms-icons a:hover img {
     opacity: 1;
     transform: scale(1.15);
 }
@@ -231,14 +236,104 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
+    min-width: 32px;
     height: 28px;
+    padding: 0 8px;
     background: var(--color-bg-alt);
     border: 1px solid var(--color-border);
     border-radius: 4px;
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-text-light);
+    transition: all 0.2s;
+}
+.more-platforms:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* ========== Installation Tabs ========== */
+.install-tabs {
+    margin: 2rem 0;
+}
+.install-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 0;
+}
+.install-tab-btn {
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.install-tab-btn:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-alt);
+}
+.install-tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    background: var(--color-bg-alt);
+}
+.install-tab-btn svg {
+    width: 18px;
+    height: 18px;
+}
+.install-tab-content {
+    display: none;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: 0 0 var(--radius) var(--radius);
+    border: 1px solid var(--color-border);
+    border-top: none;
+}
+.install-tab-content.active {
+    display: block;
+}
+.install-tab-content h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    font-size: 1.125rem;
+}
+.install-tab-content pre {
+    margin: 1rem 0;
+}
+.install-tab-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+.install-tab-content p:last-child {
+    margin-bottom: 0;
+}
+@media (max-width: 768px) {
+    .install-tabs-nav {
+        flex-direction: column;
+        gap: 0;
+    }
+    .install-tab-btn {
+        width: 100%;
+        justify-content: flex-start;
+        border-bottom: 1px solid var(--color-border);
+        margin-bottom: 0;
+    }
+    .install-tab-btn.active {
+        border-bottom-color: var(--color-border);
+        border-left: 3px solid var(--color-primary);
+    }
 }
 
 /* ========== Section Styles ========== */
@@ -718,22 +813,22 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
         <header class="site-header">
     <div class="container">
         <nav class="main-nav">
-            <a href="/cms-preview/66/" class="logo" title="OpenClaw">
+            <a href="/" class="logo" title="OpenClaw">
                                 
                                     <span class="logo-text">OpenClaw</span>
                             </a>
             
             <ul class="nav-menu">
-                <li><a href="/cms-preview/66/" title="Home">Home</a></li>
+                <li><a href="/" title="Home">Home</a></li>
                 
                 
-                                                        <li><a href="/cms-preview/66/category/get-started" title="Get Started">Get Started</a></li>
-                                        <li><a href="/cms-preview/66/category/channels" title="Channels">Channels</a></li>
-                                        <li><a href="/cms-preview/66/category/use-cases" title="Use Cases">Use Cases</a></li>
-                                        <li><a href="/cms-preview/66/category/ideas" title="Ideas">Ideas</a></li>
-                                        <li><a href="/cms-preview/66/category/reviews" title="Reviews">Reviews</a></li>
+                                                        <li><a href="/category/get-started" title="Get Started">Get Started</a></li>
+                                        <li><a href="/category/channels" title="Channels">Channels</a></li>
+                                        <li><a href="/category/use-cases" title="Use Cases">Use Cases</a></li>
+                                        <li><a href="/category/ideas" title="Ideas">Ideas</a></li>
+                                        <li><a href="/category/reviews" title="Reviews">Reviews</a></li>
                                                     
-                <li><a href="/cms-preview/66/#about" title="About">About</a></li>
+                <li><a href="/#about" title="About">About</a></li>
             </ul>
             
             <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -756,23 +851,39 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
                         
             
             <div class="hero-cta">
-                <a href="/cms-preview/66/category/get-started" class="btn btn-primary btn-lg">Get Started</a>
-                <a href="/cms-preview/66/category/channels" class="btn btn-outline btn-lg">View Channels</a>
+                <a href="/category/get-started" class="btn btn-primary btn-lg">Get Started</a>
+                <a href="/category/channels" class="btn btn-outline btn-lg">View Channels</a>
             </div>
             
             
             <div class="hero-platforms">
                 <span class="platforms-label">Supports 18+ platforms:</span>
                 <div class="platforms-icons">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp" title="WhatsApp" style="filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/telegram.svg" alt="Telegram" title="Telegram" style="filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(175deg) brightness(99%) contrast(101%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg" alt="Discord" title="Discord" style="filter: invert(35%) sepia(57%) saturate(2465%) hue-rotate(224deg) brightness(95%) contrast(95%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" alt="Slack" title="Slack" style="filter: invert(20%) sepia(100%) saturate(3000%) hue-rotate(280deg) brightness(80%) contrast(100%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftteams.svg" alt="Teams" title="Microsoft Teams" style="filter: invert(35%) sepia(57%) saturate(2465%) hue-rotate(224deg) brightness(95%) contrast(95%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/signal.svg" alt="Signal" title="Signal" style="filter: invert(35%) sepia(57%) saturate(2465%) hue-rotate(200deg) brightness(95%) contrast(95%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/line.svg" alt="LINE" title="LINE" style="filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/matrix.svg" alt="Matrix" title="Matrix">
-                    <span class="more-platforms">+10</span>
+                    <a href="/openclaw-whatsapp-integration" title="WhatsApp Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp" style="filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);">
+                    </a>
+                    <a href="/openclaw-telegram-integration" title="Telegram Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/telegram.svg" alt="Telegram" style="filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(175deg) brightness(99%) contrast(101%);">
+                    </a>
+                    <a href="/openclaw-discord-integration" title="Discord Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg" alt="Discord" style="filter: invert(35%) sepia(57%) saturate(2465%) hue-rotate(224deg) brightness(95%) contrast(95%);">
+                    </a>
+                    <a href="/openclaw-slack-integration" title="Slack Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" alt="Slack" style="filter: invert(20%) sepia(100%) saturate(3000%) hue-rotate(280deg) brightness(80%) contrast(100%);">
+                    </a>
+                    <a href="/openclaw-microsoft-teams-integration" title="Microsoft Teams Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftteams.svg" alt="Teams" style="filter: invert(35%) sepia(57%) saturate(2465%) hue-rotate(224deg) brightness(95%) contrast(95%);">
+                    </a>
+                    <a href="/openclaw-signal-integration" title="Signal Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/signal.svg" alt="Signal" style="filter: invert(35%) sepia(57%) saturate(2465%) hue-rotate(200deg) brightness(95%) contrast(95%);">
+                    </a>
+                    <a href="/openclaw-feishu-lark-integration" title="LINE Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/line.svg" alt="LINE" style="filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);">
+                    </a>
+                    <a href="/openclaw-imessage-integration" title="iMessage Integration">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/imessage.svg" alt="iMessage" style="filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);">
+                    </a>
+                    <a href="/openclaw-all-supported-platforms" class="more-platforms" title="View All Platforms">+10</a>
                 </div>
             </div>
         </div>
@@ -793,27 +904,32 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 
 <div class="history-section">
     <h3>🦞 The OpenClaw Story: From Clawdbot to Moltbot to OpenClaw</h3>
-    
+
     <p>OpenClaw has an interesting origin story that reflects the fast-paced nature of open-source development. Austrian software engineer Peter Steinberger, known for creating PSPDFKit, built the project as a weekend experiment in November 2025. His goal was simple: connect AI models to messaging apps so users could interact with AI through WhatsApp instead of opening another browser tab.</p>
-    
     <p>The original name was <strong>Clawdbot</strong> — a clever wordplay combining "Claude" (the Anthropic AI model) with "claw" (referencing the lobster mascot). The project exploded in popularity, gaining over 60,000 GitHub stars within its first week and catching the attention of major tech publications.</p>
-    
     <p>Then came the first rename. On January 27, 2026, Anthropic's legal team sent a trademark notice: "Clawd" was too similar to "Claude." Steinberger agreed to rename immediately. After a chaotic 5 AM Discord brainstorming session with the community, they landed on <strong>Moltbot</strong> — because lobsters molt (shed their shell) to grow. The name was poetic and legally safe.</p>
-    
     <p>But "Moltbot" proved difficult to pronounce. Community members kept mispronouncing it, and the name didn't stick in conversations. Just two days later, on January 30, 2026, the project received its final identity: <strong>OpenClaw</strong>. The name combines "Open" (representing open-source, community-driven values) with "Claw" (paying tribute to the project's lobster heritage). This time, the team prepared properly — securing trademarks, domains, and social accounts in advance.</p>
-    
     <p>Today, OpenClaw stands as one of the fastest-growing open-source AI projects in history, with over 100,000 GitHub stars and millions of users worldwide.</p>
 </div>
 
 <div class="installation-section">
     <h3>🔧 Installation Guide: Get OpenClaw Running on Any System</h3>
-    
+
     <p>OpenClaw supports multiple installation methods across all major operating systems. Choose the approach that best fits your technical comfort level and deployment requirements.</p>
     
-    <div class="install-method">
-        <h4>Quick Install (All Platforms)</h4>
-        <p>The fastest way to get started — works on macOS, Windows (via WSL2), and Linux:</p>
-        <pre><code># Install OpenClaw globally (requires Node.js 22+)
+    <div class="install-tabs">
+        <div class="install-tabs-nav">
+            <button class="install-tab-btn active" data-tab="quick">⚡ Quick Install</button>
+            <button class="install-tab-btn" data-tab="macos">🍎 macOS</button>
+            <button class="install-tab-btn" data-tab="windows">🪟 Windows</button>
+            <button class="install-tab-btn" data-tab="linux">🐧 Linux</button>
+            <button class="install-tab-btn" data-tab="docker">🐳 Docker</button>
+        </div>
+        
+        <div class="install-tab-content active" data-tab="quick">
+            <h4>Quick Install (All Platforms)</h4>
+            <p>The fastest way to get started — works on macOS, Windows (via WSL2), and Linux:</p>
+            <pre><code># Install OpenClaw globally (requires Node.js 22+)
 npm install -g openclaw@latest
 
 # Run the onboarding wizard
@@ -821,13 +937,13 @@ openclaw onboard --install-daemon
 
 # Verify installation
 openclaw --version</code></pre>
-        <p>The onboarding wizard guides you through connecting your first platform and choosing an AI model. The <code>--install-daemon</code> flag ensures OpenClaw runs in the background, even after system reboots.</p>
-    </div>
-    
-    <div class="install-method">
-        <h4>macOS Installation</h4>
-        <p>macOS users can install via Homebrew or nvm:</p>
-        <pre><code># Option 1: Using Homebrew
+            <p>The onboarding wizard guides you through connecting your first platform and choosing an AI model. The <code>--install-daemon</code> flag ensures OpenClaw runs in the background, even after system reboots.</p>
+        </div>
+        
+        <div class="install-tab-content" data-tab="macos">
+            <h4>macOS Installation</h4>
+            <p>macOS users can install via Homebrew or nvm:</p>
+            <pre><code># Option 1: Using Homebrew
 brew install node@22
 brew link node@22
 npm install -g openclaw@latest
@@ -839,13 +955,13 @@ npm install -g openclaw@latest
 
 # Start OpenClaw with daemon
 openclaw onboard --install-daemon</code></pre>
-        <p>On macOS, the daemon creates a launchd service at <code>~/Library/LaunchAgents/</code> that auto-starts on login.</p>
-    </div>
-    
-    <div class="install-method">
-        <h4>Windows Installation (WSL2 Required)</h4>
-        <p>OpenClaw requires WSL2 (Windows Subsystem for Linux) on Windows. Native Windows is not supported due to Unix-based process management requirements.</p>
-        <pre><code># Step 1: Enable WSL2 (run in PowerShell as Administrator)
+            <p>On macOS, the daemon creates a launchd service at <code>~/Library/LaunchAgents/</code> that auto-starts on login.</p>
+        </div>
+        
+        <div class="install-tab-content" data-tab="windows">
+            <h4>Windows Installation (WSL2 Required)</h4>
+            <p>OpenClaw requires WSL2 (Windows Subsystem for Linux) on Windows. Native Windows is not supported due to Unix-based process management requirements.</p>
+            <pre><code># Step 1: Enable WSL2 (run in PowerShell as Administrator)
 wsl --install
 
 # Step 2: After restart, open Ubuntu from Start Menu
@@ -857,13 +973,13 @@ npm install -g openclaw@latest
 
 # Step 4: Run onboarding
 openclaw onboard --install-daemon</code></pre>
-        <p>Access the OpenClaw dashboard from Windows by finding your WSL IP with <code>ip addr show eth0</code> and navigating to that address in your browser.</p>
-    </div>
-    
-    <div class="install-method">
-        <h4>Linux Installation</h4>
-        <p>OpenClaw supports Ubuntu, Debian, Fedora, Arch Linux, and Raspberry Pi OS:</p>
-        <pre><code># Ubuntu/Debian
+            <p>Access the OpenClaw dashboard from Windows by finding your WSL IP with <code>ip addr show eth0</code> and navigating to that address in your browser.</p>
+        </div>
+        
+        <div class="install-tab-content" data-tab="linux">
+            <h4>Linux Installation</h4>
+            <p>OpenClaw supports Ubuntu, Debian, Fedora, Arch Linux, and Raspberry Pi OS:</p>
+            <pre><code># Ubuntu/Debian
 sudo apt update
 sudo apt install -y curl git build-essential
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
@@ -880,15 +996,15 @@ openclaw onboard --install-daemon
 sudo pacman -S curl git base-devel nodejs npm
 npm install -g openclaw@latest
 openclaw onboard --install-daemon</code></pre>
-        <p>On Linux, the daemon creates a systemd user service. Enable auto-start on boot with:</p>
-        <pre><code>systemctl --user enable openclaw-gateway
+            <p>On Linux, the daemon creates a systemd user service. Enable auto-start on boot with:</p>
+            <pre><code>systemctl --user enable openclaw-gateway
 sudo loginctl enable-linger $USER</code></pre>
-    </div>
-    
-    <div class="install-method">
-        <h4>Docker Installation (For Server Deployments)</h4>
-        <p>Docker provides isolation and reproducibility, ideal for VPS or cloud deployments:</p>
-        <pre><code># Pull the official image
+        </div>
+        
+        <div class="install-tab-content" data-tab="docker">
+            <h4>Docker Installation (For Server Deployments)</h4>
+            <p>Docker provides isolation and reproducibility, ideal for VPS or cloud deployments:</p>
+            <pre><code># Pull the official image
 docker pull openclaw/openclaw:latest
 
 # Run with persistent configuration
@@ -898,7 +1014,8 @@ docker run -d \
   -p 18789:18789 \
   openclaw/openclaw:latest \
   gateway --port 18789</code></pre>
-        <p>Docker deployments support per-session sandboxing and Nix mode for declarative configuration.</p>
+            <p>Docker deployments support per-session sandboxing and Nix mode for declarative configuration.</p>
+        </div>
     </div>
 </div>
 
@@ -923,33 +1040,48 @@ docker run -d \
 
 <div class="features-highlight">
     <h3>Why Teams Choose OpenClaw</h3>
-    
+
     <p>Built on advanced natural language processing technology, OpenClaw understands context, maintains conversation flow, and provides intelligent responses that feel remarkably human. Whether you're managing a gaming community on Discord, coordinating a development team on Slack, or running customer support through Telegram, OpenClaw adapts to your specific needs and communication style.</p>
-    
     <p>The platform's versatility sets it apart from conventional chatbots. OpenClaw doesn't just respond to commands—it actively participates in conversations, learns from interactions, and continuously improves its understanding of your team's unique communication patterns. This adaptive intelligence makes it an invaluable asset for organizations of all sizes.</p>
-    
     <p>Security and privacy remain paramount in OpenClaw's design philosophy. All communications are encrypted, and the system adheres to strict data protection standards. Your conversations, team information, and sensitive data remain confidential, with robust access controls ensuring only authorized users can interact with the AI assistant.</p>
 </div>
 
 <div class="use-cases-overview">
     <h3>Practical Applications Across Industries</h3>
-    
+
     <p>Customer service teams leverage OpenClaw to handle routine inquiries, freeing human agents to focus on complex issues requiring personal attention. The AI assistant can manage multiple conversations simultaneously, providing instant responses to frequently asked questions while escalating sophisticated problems to appropriate team members.</p>
-    
     <p>Educational institutions utilize OpenClaw for student support, answering questions about courses, schedules, and campus resources. The assistant operates 24/7, ensuring students receive timely information regardless of time zones or office hours. This constant availability significantly improves student satisfaction and reduces administrative workload.</p>
-    
     <p>Development teams find OpenClaw particularly valuable for project coordination. The assistant can track tasks, send reminders, facilitate stand-up meetings, and even help with code-related questions. By automating routine project management tasks, teams can maintain focus on actual development work.</p>
 </div>
 
 <div class="community-support">
     <h3>Community and Support</h3>
-    
+
     <p>Join thousands of teams worldwide who have transformed their communication workflows with OpenClaw. Our active community shares best practices, creative implementations, and helpful tips for maximizing the platform's potential. Whether you're just starting or looking to optimize an existing deployment, you'll find valuable insights from experienced users.</p>
-    
     <p>Professional support is available for enterprise deployments, ensuring your team receives expert guidance throughout implementation and beyond. Our support team understands the unique challenges of integrating AI assistants into existing workflows and provides tailored solutions to address your specific requirements.</p>
-    
     <p>Explore our detailed guides covering Discord integration, Slack setup, Telegram configuration, and advanced use cases. Learn how other organizations leverage OpenClaw for customer service, team collaboration, education, and creative applications.</p>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabBtns = document.querySelectorAll('.install-tab-btn');
+    const tabContents = document.querySelectorAll('.install-tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Remove active from all
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active to clicked
+            this.classList.add('active');
+            document.querySelector(`.install-tab-content[data-tab="${tabId}"]`).classList.add('active');
+        });
+    });
+});
+</script>
             </div>
         </div>
     </section>
