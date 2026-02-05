@@ -3,27 +3,33 @@
     
     <url>
         <loc>https://clawdbotmoltbot.com/</loc>
-        <lastmod>2026-02-05T12:02:33+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:21+08:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     
         <url>
-        <loc>https://clawdbotmoltbot.com/category/chat-integrations</loc>
-        <lastmod>2026-02-04T16:00:02+08:00</lastmod>
+        <loc>https://clawdbotmoltbot.com/category/channels</loc>
+        <lastmod>2026-02-05T15:48:16+08:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>https://clawdbotmoltbot.com/category/creative-ideas</loc>
-        <lastmod>2026-02-04T16:00:02+08:00</lastmod>
+        <loc>https://clawdbotmoltbot.com/category/get-started</loc>
+        <lastmod>2026-02-05T15:48:16+08:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>https://clawdbotmoltbot.com/category/installation-guide</loc>
-        <lastmod>2026-02-04T16:00:02+08:00</lastmod>
+        <loc>https://clawdbotmoltbot.com/category/ideas</loc>
+        <lastmod>2026-02-05T15:48:16+08:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>https://clawdbotmoltbot.com/category/reviews</loc>
+        <lastmod>2026-02-05T15:48:16+08:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -33,67 +39,97 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+        
+    
+        
+    
         <url>
-        <loc>https://clawdbotmoltbot.com/category/user-reviews</loc>
-        <lastmod>2026-02-04T16:00:02+08:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <loc>https://clawdbotmoltbot.com/openclaw-all-supported-platforms</loc>
+        <lastmod>2026-02-05T15:59:17+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
-        
-    
-        
-    
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-creative-uses</loc>
-        <lastmod>2026-02-05T12:02:31+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:17+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-customer-service</loc>
-        <lastmod>2026-02-05T12:02:31+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:18+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-discord-integration</loc>
-        <lastmod>2026-02-05T12:02:32+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:18+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-education</loc>
-        <lastmod>2026-02-05T12:02:32+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:18+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+        <url>
+        <loc>https://clawdbotmoltbot.com/openclaw-feishu-lark-integration</loc>
+        <lastmod>2026-02-05T15:59:18+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+        <url>
+        <loc>https://clawdbotmoltbot.com/openclaw-imessage-integration</loc>
+        <lastmod>2026-02-05T15:59:19+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+        <url>
+        <loc>https://clawdbotmoltbot.com/openclaw-microsoft-teams-integration</loc>
+        <lastmod>2026-02-05T15:59:19+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-quick-start-guide</loc>
-        <lastmod>2026-02-05T12:02:32+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:19+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+        <url>
+        <loc>https://clawdbotmoltbot.com/openclaw-signal-integration</loc>
+        <lastmod>2026-02-05T15:59:19+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-slack-integration</loc>
-        <lastmod>2026-02-05T12:02:32+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:20+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-team-collaboration</loc>
-        <lastmod>2026-02-05T12:02:33+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:20+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-telegram-integration</loc>
-        <lastmod>2026-02-05T12:02:33+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:20+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
         <url>
         <loc>https://clawdbotmoltbot.com/openclaw-user-reviews</loc>
-        <lastmod>2026-02-05T12:02:33+08:00</lastmod>
+        <lastmod>2026-02-05T15:59:20+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+        <url>
+        <loc>https://clawdbotmoltbot.com/openclaw-whatsapp-integration</loc>
+        <lastmod>2026-02-05T15:59:21+08:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

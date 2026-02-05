@@ -604,17 +604,12 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
                 <li><a href="/" title="Home">Home</a></li>
                 
                 
-                                <li class="has-dropdown">
-                    <a href="#" title="Categories">Categories</a>
-                    <ul class="dropdown-menu">
-                                                <li><a href="/category/installation-guide" title="Installation &amp; Setup">Installation &amp; Setup</a></li>
-                                                <li><a href="/category/chat-integrations" title="Chat Platform Integration">Chat Platform Integration</a></li>
-                                                <li><a href="/category/use-cases" title="Use Cases">Use Cases</a></li>
-                                                <li><a href="/category/creative-ideas" title="Creative Ideas">Creative Ideas</a></li>
-                                                <li><a href="/category/user-reviews" title="User Reviews">User Reviews</a></li>
-                                            </ul>
-                </li>
-                                
+                                                        <li><a href="/category/get-started" title="Get Started">Get Started</a></li>
+                                        <li><a href="/category/channels" title="Channels">Channels</a></li>
+                                        <li><a href="/category/use-cases" title="Use Cases">Use Cases</a></li>
+                                        <li><a href="/category/ideas" title="Ideas">Ideas</a></li>
+                                        <li><a href="/category/reviews" title="Reviews">Reviews</a></li>
+                                                    
                 <li><a href="/#about" title="About">About</a></li>
             </ul>
             
@@ -651,23 +646,120 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
     <p>OpenClaw represents a breakthrough in AI-powered communication technology, designed specifically for teams and communities that rely on modern chat platforms. This sophisticated AI chat assistant seamlessly integrates with Discord, Slack, Telegram, and numerous other messaging platforms, transforming how teams collaborate and communicate in digital workspaces.</p>
 </div>
 
-<div class="quick-install-section">
-    <h3>🚀 Quick Install - Get Started in 3 Minutes</h3>
+<div class="history-section">
+    <h3>🦞 The OpenClaw Story: From Clawdbot to Moltbot to OpenClaw</h3>
     
-    <p>The fastest way to install OpenClaw and start using it immediately:</p>
+    <p>OpenClaw has an interesting origin story that reflects the fast-paced nature of open-source development. Austrian software engineer Peter Steinberger, known for creating PSPDFKit, built the project as a weekend experiment in November 2025. His goal was simple: connect AI models to messaging apps so users could interact with AI through WhatsApp instead of opening another browser tab.</p>
     
-    <pre><code># Install OpenClaw CLI globally
-npm install -g openclaw-cli
+    <p>The original name was <strong>Clawdbot</strong> — a clever wordplay combining "Claude" (the Anthropic AI model) with "claw" (referencing the lobster mascot). The project exploded in popularity, gaining over 60,000 GitHub stars within its first week and catching the attention of major tech publications.</p>
+    
+    <p>Then came the first rename. On January 27, 2026, Anthropic's legal team sent a trademark notice: "Clawd" was too similar to "Claude." Steinberger agreed to rename immediately. After a chaotic 5 AM Discord brainstorming session with the community, they landed on <strong>Moltbot</strong> — because lobsters molt (shed their shell) to grow. The name was poetic and legally safe.</p>
+    
+    <p>But "Moltbot" proved difficult to pronounce. Community members kept mispronouncing it, and the name didn't stick in conversations. Just two days later, on January 30, 2026, the project received its final identity: <strong>OpenClaw</strong>. The name combines "Open" (representing open-source, community-driven values) with "Claw" (paying tribute to the project's lobster heritage). This time, the team prepared properly — securing trademarks, domains, and social accounts in advance.</p>
+    
+    <p>Today, OpenClaw stands as one of the fastest-growing open-source AI projects in history, with over 100,000 GitHub stars and millions of users worldwide.</p>
+</div>
 
-# Create your first bot (choose: discord, slack, or telegram)
-openclaw init my-bot --platform discord
+<div class="installation-section">
+    <h3>🔧 Installation Guide: Get OpenClaw Running on Any System</h3>
+    
+    <p>OpenClaw supports multiple installation methods across all major operating systems. Choose the approach that best fits your technical comfort level and deployment requirements.</p>
+    
+    <div class="install-method">
+        <h4>Quick Install (All Platforms)</h4>
+        <p>The fastest way to get started — works on macOS, Windows (via WSL2), and Linux:</p>
+        <pre><code># Install OpenClaw globally (requires Node.js 22+)
+npm install -g openclaw@latest
 
-# Navigate to project and start
-cd my-bot
-openclaw dev</code></pre>
+# Run the onboarding wizard
+openclaw onboard --install-daemon
+
+# Verify installation
+openclaw --version</code></pre>
+        <p>The onboarding wizard guides you through connecting your first platform and choosing an AI model. The <code>--install-daemon</code> flag ensures OpenClaw runs in the background, even after system reboots.</p>
+    </div>
     
-    <p>That's it! Your OpenClaw assistant is now running. Follow the platform-specific guides below for detailed configuration.</p>
+    <div class="install-method">
+        <h4>macOS Installation</h4>
+        <p>macOS users can install via Homebrew or nvm:</p>
+        <pre><code># Option 1: Using Homebrew
+brew install node@22
+brew link node@22
+npm install -g openclaw@latest
+
+# Option 2: Using nvm (recommended for version management)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+nvm install 22 && nvm use 22
+npm install -g openclaw@latest
+
+# Start OpenClaw with daemon
+openclaw onboard --install-daemon</code></pre>
+        <p>On macOS, the daemon creates a launchd service at <code>~/Library/LaunchAgents/</code> that auto-starts on login.</p>
+    </div>
     
+    <div class="install-method">
+        <h4>Windows Installation (WSL2 Required)</h4>
+        <p>OpenClaw requires WSL2 (Windows Subsystem for Linux) on Windows. Native Windows is not supported due to Unix-based process management requirements.</p>
+        <pre><code># Step 1: Enable WSL2 (run in PowerShell as Administrator)
+wsl --install
+
+# Step 2: After restart, open Ubuntu from Start Menu
+# Step 3: Inside Ubuntu, install Node.js and OpenClaw
+sudo apt update && sudo apt upgrade -y
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
+npm install -g openclaw@latest
+
+# Step 4: Run onboarding
+openclaw onboard --install-daemon</code></pre>
+        <p>Access the OpenClaw dashboard from Windows by finding your WSL IP with <code>ip addr show eth0</code> and navigating to that address in your browser.</p>
+    </div>
+    
+    <div class="install-method">
+        <h4>Linux Installation</h4>
+        <p>OpenClaw supports Ubuntu, Debian, Fedora, Arch Linux, and Raspberry Pi OS:</p>
+        <pre><code># Ubuntu/Debian
+sudo apt update
+sudo apt install -y curl git build-essential
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
+npm install -g openclaw@latest
+openclaw onboard --install-daemon
+
+# Fedora
+sudo dnf install -y curl git gcc-c++ make nodejs
+npm install -g openclaw@latest
+openclaw onboard --install-daemon
+
+# Arch Linux
+sudo pacman -S curl git base-devel nodejs npm
+npm install -g openclaw@latest
+openclaw onboard --install-daemon</code></pre>
+        <p>On Linux, the daemon creates a systemd user service. Enable auto-start on boot with:</p>
+        <pre><code>systemctl --user enable openclaw-gateway
+sudo loginctl enable-linger $USER</code></pre>
+    </div>
+    
+    <div class="install-method">
+        <h4>Docker Installation (For Server Deployments)</h4>
+        <p>Docker provides isolation and reproducibility, ideal for VPS or cloud deployments:</p>
+        <pre><code># Pull the official image
+docker pull openclaw/openclaw:latest
+
+# Run with persistent configuration
+docker run -d \
+  --name openclaw-gateway \
+  -v ~/.openclaw:/root/.openclaw \
+  -p 18789:18789 \
+  openclaw/openclaw:latest \
+  gateway --port 18789</code></pre>
+        <p>Docker deployments support per-session sandboxing and Nix mode for declarative configuration.</p>
+    </div>
+</div>
+
+<div class="platform-links-section">
+    <h3>📱 Platform Integration Guides</h3>
+    <p>Once installed, connect OpenClaw to your preferred messaging platform:</p>
     <div class="platform-links">
         <a href="/openclaw-discord-integration" class="platform-card">
             <strong>📱 Discord</strong>
@@ -691,8 +783,6 @@ openclaw dev</code></pre>
     
     <p>The platform's versatility sets it apart from conventional chatbots. OpenClaw doesn't just respond to commands—it actively participates in conversations, learns from interactions, and continuously improves its understanding of your team's unique communication patterns. This adaptive intelligence makes it an invaluable asset for organizations of all sizes.</p>
     
-    <p>Integration is remarkably straightforward. Unlike complex enterprise solutions that require extensive technical knowledge, OpenClaw can be deployed in minutes. The setup process guides you through platform-specific configurations, ensuring optimal performance whether you're connecting to Discord servers, Slack workspaces, or Telegram groups.</p>
-    
     <p>Security and privacy remain paramount in OpenClaw's design philosophy. All communications are encrypted, and the system adheres to strict data protection standards. Your conversations, team information, and sensitive data remain confidential, with robust access controls ensuring only authorized users can interact with the AI assistant.</p>
 </div>
 
@@ -706,16 +796,6 @@ openclaw dev</code></pre>
     <p>Development teams find OpenClaw particularly valuable for project coordination. The assistant can track tasks, send reminders, facilitate stand-up meetings, and even help with code-related questions. By automating routine project management tasks, teams can maintain focus on actual development work.</p>
 </div>
 
-<div class="getting-started-info">
-    <h3>Getting Started with OpenClaw</h3>
-    
-    <p>Beginning your OpenClaw journey requires minimal technical expertise. Our comprehensive documentation walks you through each integration step, from initial setup to advanced customization. The platform supports both Moltbot and Clawdbot configurations, allowing you to choose the deployment model that best suits your infrastructure requirements.</p>
-    
-    <p>Training OpenClaw for your specific use case is intuitive. The system learns from your team's communication patterns, gradually becoming more effective at understanding context and providing relevant responses. This machine learning capability means OpenClaw becomes more valuable over time, continuously adapting to your evolving needs.</p>
-    
-    <p>For organizations requiring specialized functionality, OpenClaw offers extensive customization options. You can define custom commands, create automated workflows, and integrate with existing tools and services. This flexibility ensures OpenClaw complements your current technology stack rather than requiring disruptive changes to established processes.</p>
-</div>
-
 <div class="community-support">
     <h3>Community and Support</h3>
     
@@ -723,7 +803,7 @@ openclaw dev</code></pre>
     
     <p>Professional support is available for enterprise deployments, ensuring your team receives expert guidance throughout implementation and beyond. Our support team understands the unique challenges of integrating AI assistants into existing workflows and provides tailored solutions to address your specific requirements.</p>
     
-    <p>Explore our detailed guides covering Discord integration, Slack setup, Telegram configuration, and advanced use cases. Learn how other organizations leverage OpenClaw for customer service, team collaboration, education, and creative applications. Start your free trial today and experience the future of AI-powered communication.</p>
+    <p>Explore our detailed guides covering Discord integration, Slack setup, Telegram configuration, and advanced use cases. Learn how other organizations leverage OpenClaw for customer service, team collaboration, education, and creative applications.</p>
 </div>
             </div>
         </div>
@@ -754,11 +834,11 @@ openclaw dev</code></pre>
                                 <div class="footer-column">
                     <h4>Categories</h4>
                     <ul>
-                                                <li><a href="/category/installation-guide" title="Installation &amp; Setup">Installation &amp; Setup</a></li>
-                                                <li><a href="/category/chat-integrations" title="Chat Platform Integration">Chat Platform Integration</a></li>
+                                                <li><a href="/category/get-started" title="Get Started">Get Started</a></li>
+                                                <li><a href="/category/channels" title="Channels">Channels</a></li>
                                                 <li><a href="/category/use-cases" title="Use Cases">Use Cases</a></li>
-                                                <li><a href="/category/creative-ideas" title="Creative Ideas">Creative Ideas</a></li>
-                                                <li><a href="/category/user-reviews" title="User Reviews">User Reviews</a></li>
+                                                <li><a href="/category/ideas" title="Ideas">Ideas</a></li>
+                                                <li><a href="/category/reviews" title="Reviews">Reviews</a></li>
                                             </ul>
                 </div>
                                 
