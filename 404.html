@@ -181,11 +181,65 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 /* ========== Hero Section ========== */
 .hero-section {
     text-align: center;
-    padding: 4rem 0;
+    padding: 4rem 0 3rem;
     background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
 }
 .hero-title { font-size: 3rem; margin-bottom: 1rem; }
-.hero-tagline { font-size: 1.25rem; color: var(--color-text-light); max-width: 600px; margin: 0 auto; }
+.hero-tagline { font-size: 1.25rem; color: var(--color-text-light); max-width: 600px; margin: 0 auto 2rem; }
+
+/* Hero CTA */
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+}
+
+/* Hero Platforms */
+.hero-platforms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+.platforms-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+.platforms-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.platforms-icons img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+.platforms-icons img:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+.more-platforms {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 28px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+}
 
 /* ========== Section Styles ========== */
 .section-title { text-align: center; margin-bottom: 0.5rem; }
@@ -699,7 +753,29 @@ h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
         <div class="container">
             <h1 class="hero-title">OpenClaw</h1>
                         <p class="hero-tagline">Powerful AI Chat Assistant</p>
-                    </div>
+                        
+            
+            <div class="hero-cta">
+                <a href="/category/get-started" class="btn btn-primary btn-lg">Get Started</a>
+                <a href="/category/channels" class="btn btn-outline btn-lg">View Channels</a>
+            </div>
+            
+            
+            <div class="hero-platforms">
+                <span class="platforms-label">Supports 18+ platforms:</span>
+                <div class="platforms-icons">
+                    <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" title="WhatsApp">
+                    <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Telegram" title="Telegram">
+                    <img src="https://cdn.simpleicons.org/discord/5865F2" alt="Discord" title="Discord">
+                    <img src="https://cdn.simpleicons.org/slack/4A154B" alt="Slack" title="Slack">
+                    <img src="https://cdn.simpleicons.org/microsoftteams/6264A7" alt="Teams" title="Microsoft Teams">
+                    <img src="https://cdn.simpleicons.org/signal/3A76F0" alt="Signal" title="Signal">
+                    <img src="https://cdn.simpleicons.org/line/00C300" alt="LINE" title="LINE">
+                    <img src="https://cdn.simpleicons.org/matrix/000000" alt="Matrix" title="Matrix">
+                    <span class="more-platforms">+10</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     
